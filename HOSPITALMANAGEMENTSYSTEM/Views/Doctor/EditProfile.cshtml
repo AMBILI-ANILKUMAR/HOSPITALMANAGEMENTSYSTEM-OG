@@ -1,0 +1,105 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.DoctorDemo
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Doctor/DoctorMaster.cshtml";
+}
+
+@using (Html.BeginForm("EditProfile","Doctor",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <center>
+        <div class="container-fluid">
+            <div class="card" style="width: 80%; margin-top: 20px; ">
+                <div style=" background-color: rgba(128,128,128,0.2);height:50PX">
+                    <b style="font-size:x-large;margin-top:20PX">Edit Profile</b>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        <b>DOCTOR ID</b><br />
+                                        @Html.EditorFor(model => model.DoctId, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DoctId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>DOCTOR NAME</b>
+                                        @Html.EditorFor(model => model.DoctName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DoctName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>SPECIALIZATION</b><br />
+                                        @Html.DropDownListFor(M => M.spclId,Model.SpclDropdown,"select" ,new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.spclId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        <b>GENDER</b><br />
+                                        @Html.RadioButtonFor(e => e.Gender, "Male", new { @class = "form - check - input" })Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        @Html.RadioButtonFor(e => e.Gender, "Female", new { @class = "form - check - input" })Female
+                                        <br />@Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                    </div>
+                                    
+
+                                    <div class="col-md-4">
+                                        <b>AGE</b>
+                                        @Html.TextBoxFor(model => model.age, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>ADDRESS</b>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <b>PHONE NUMBER</b>
+                                        @Html.EditorFor(model => model.phonenumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.phonenumber, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Email</b>
+
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>PASSWORD</b>
+
+                                        @Html.TextBoxFor(model => model.password, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-offset-2 col-md-12">
+                                        <input type="submit" value="UPDATE" class="btn btn-dark" />
+                                        <p style="color:red">@ViewBag.info</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </center>
+
+}

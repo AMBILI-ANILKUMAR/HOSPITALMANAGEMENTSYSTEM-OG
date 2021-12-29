@@ -1,0 +1,112 @@
+﻿@using PagedList.Mvc
+
+@model  PagedList.IPagedList<HOSPITALMANAGEMENTSYSTEM.Models.Appointments>
+
+@{
+    ViewBag.Title = "ViewAppointment";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+@if (Model == null)
+{
+    <h1 style="color: red; text-align: center; margin-top: 100px">@ViewBag.info</h1>
+}
+else
+{
+<center>
+    <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+        <h1 class="text-dark">APPOINTMENTS</h1>
+
+    </div>
+    <table style="width:100%;" class="table  table-hover">
+        <thead>
+            <tr>
+                <th>
+                    APPOINTMENT ID
+                </th>
+                <th>
+                    PATIENT NAME
+                </th>
+                <th>
+                    DISEASE
+                </th>
+                <th>
+                    DOCTOR NAME
+                </th>
+                <th>
+                    SPECIALIZATION
+                </th>
+                <th>
+                    DATE
+                </th>
+                <th>
+                    TIME
+                </th>
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.disease)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoctName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SplName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppTime)
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.HasNextPage || Model.HasPreviousPage)
+    {
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 450px">
+            @Html.PagedListPager(Model, page => Url.Action("ViewAppointment", new { page }))
+        </div>
+    </div>
+    }
+</center>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

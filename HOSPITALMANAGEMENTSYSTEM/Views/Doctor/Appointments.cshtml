@@ -1,0 +1,110 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Appointments>
+
+@{
+    ViewBag.Title = "Appointments";
+    Layout = "~/Views/Doctor/DoctorMaster.cshtml";
+}
+
+
+
+@if (!Model.Any())
+{
+    <h1 style="color: red; text-align: center; margin-top: 100px">@ViewBag.info</h1>
+}
+else
+{
+    <center>
+        <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+            <h1 class="text-dark">PATIENTS</h1>
+
+        </div>
+        <table style="width:100%;" class="table table-bordered  table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        APPOINTMENT ID
+                    </th>
+                    <th>
+                        PATIENT NAME
+                    </th>
+                    <th>
+                        DISEASE
+                    </th>
+
+                    <th>
+                        ADDRESS
+                    </th>
+                    <th>
+                        PHONE NUMBER
+                    </th>
+                    <th>
+                        AGE
+                    </th>
+                    <th>
+                        BLOOD GROUP
+                    </th>
+                    <th>
+                        APPOINTMENT DATE
+                    </th>
+
+                    <th>PRESCRIPTION</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AppointmentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PatName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.disease)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phonenumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bloodgrp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink(" ", "Prescription", new { id = item.AppointmentId }, new { @class = "bi-file-earmark-ppt-fill", @style = "font-size:24px;margin-left:5px;color:black" })
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </center>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

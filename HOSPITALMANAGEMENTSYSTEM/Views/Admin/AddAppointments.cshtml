@@ -1,0 +1,92 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Appointments
+@using HOSPITALMANAGEMENTSYSTEM.Models
+@{
+    ViewBag.Title = "AddAppointments";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+
+@using (Html.BeginForm("AddAppointments","Admin",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <center>
+        @*<h1 class="text-dark" style="margin-top:20px">Doctor Registration</h1>*@
+        <div class="container-fluid">
+            <div class="card" style="width: 50%; margin-top: 20px; ">
+                <div style=" background-color: rgba(128,128,128,0.2); ">
+                    <b style="font-size:x-large">ADD NEW APPOINTMENT </b>
+                </div>
+                <div class="card-body" style="margin-top:10PX">
+                    <div class="col-md-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b>APPOINTMENT ID</b>
+                                        @Html.EditorFor(model => model.AppointmentId, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AppointmentId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b>PATIENT</b>
+                                        @Html.DropDownListFor(M => M.PatId, new SelectList(Model.PatDropdown, "Value", "Text"), "Select", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PatId, "", new { @class = "text-danger" })
+
+
+                                    </div>
+
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b>DISEASE</b>
+                                        @Html.TextAreaFor(model => model.disease, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.disease, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <b>DOCTOR</b>
+                                        @Html.DropDownListFor(M => M.DoctId, new SelectList(Model.DocDropdown, "Value", "Text"), "Select", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DoctId, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>DATE</b>
+                                        @Html.TextBoxFor(model => model.Date, new { type = "date", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>TIME</b>
+                                        @Html.DropDownListFor(model => model.AppTime, EnumHelper.GetSelectList(typeof(apointtym)),
+                                                "Select", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AppTime, "", new { @class = "text-danger" })
+
+                                            </div>
+
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-offset-2 col-md-12">
+                                        <input type="submit" value="BOOK" class="btn btn-dark" />
+                                        <p style="color:red">@ViewBag.info</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+</center>
+
+
+
+
+
+
+
+
+}
+

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Doctors>
+
+@{
+    ViewBag.Title = "Doctors";
+    Layout = "~/Views/Patient/PatientMaster.cshtml";
+}
+
+@if (!Model.Any())
+{
+<h1 style="color:red;text-align:center;margin-top:100px">@ViewBag.info</h1>
+}
+else
+{
+<center>
+    <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+        <h1 class="text-dark">DOCTORS</h1>
+
+    </div>
+    <table style="width:100%;" class="table  table-hover">
+        <thead>
+            <tr>
+                <th>
+                    DOCTOR ID
+                </th>
+                <th>
+                    DOCTOR NAME
+                </th>
+                <th>
+                    GENDER
+                </th>
+                <th>
+                    ADDRESS
+                </th>
+
+                <th>
+                    PHONE NUMBER
+                </th>
+
+                <th>
+                    SPECIALIZATION
+                </th>
+
+                <th>
+                    EMAIL
+                </th>
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phonenumber)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.specializationName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</center>
+}

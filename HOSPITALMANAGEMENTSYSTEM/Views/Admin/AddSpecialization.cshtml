@@ -1,0 +1,47 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Specializations
+@using HOSPITALMANAGEMENTSYSTEM.Models;
+
+@{
+    ViewBag.Title = "AddSpecialization";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+
+
+
+@using (Html.BeginForm("AddSpecialization", "Admin", FormMethod.Post))
+{
+    <center>
+        <div class="container-fluid" style="margin-top:150px">
+            <div class="card" style="width: 80%; margin-top: 20px; ">
+                <div style=" background-color: rgba(128,128,128,0.2); ">
+                    <b style="font-size:x-large">ADD NEW SPECIALIZATIONS </b>
+                </div>
+                <div class="card-body" style="margin-top:10PX">
+                    <div class="row">
+                        <div class="col">
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col">
+                                    <b>Specialization</b>
+                                </div>
+                                <div class="col">
+                                    @Html.TextBoxFor(e => e.specializationName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.specializationName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col">
+                                    <input type="submit" value="ADD SPECIALIZATION" class="btn btn-dark" />
+                                    <p style="color:red">@ViewBag.info</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+}
+

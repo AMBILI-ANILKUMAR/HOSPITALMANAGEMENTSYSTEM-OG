@@ -1,0 +1,65 @@
+﻿@using PagedList.Mvc
+
+@model  PagedList.IPagedList<HOSPITALMANAGEMENTSYSTEM.Models.Specializations>
+
+@{
+    ViewBag.Title = "ViewSpecialization";
+    Layout = "~/Views/Admin/AdminMaster.cshtml";
+}
+<center>
+    <h3 style="margin-top: 50px;">
+        @using (Html.BeginForm("ViewSpecialization", "Admin", FormMethod.Post))
+        {
+
+            @Html.ActionLink("ADD SPECIALIZATION", "AddSpecialization", "Admin", new { @class = "btn btn-dark" })
+        }
+
+    </h3>
+    <br />
+    <div style=" background-color: rgba(128,128,128,0.2); margin-top: 20PX; width: 60%; ">
+        <h1 class="text-dark">SPECIALIZATIONS</h1>
+
+    </div>
+    <table class="table table-bordered table-hover" style="width:60%;">
+        <thead>
+            <tr>
+                <th>
+                    SPECIALIZATION ID
+                </th>
+                <th>
+                    SPECIALIZATION NAME
+
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.spclId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.specializationName)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 450px">
+              @Html.PagedListPager(Model, page => Url.Action("ViewSpecialization", new { page }))
+        </div>
+    </div>
+</center>
+
+
+
+
+
+

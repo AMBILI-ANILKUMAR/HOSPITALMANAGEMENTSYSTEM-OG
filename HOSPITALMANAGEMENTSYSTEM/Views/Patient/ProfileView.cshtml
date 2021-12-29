@@ -1,0 +1,184 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Patients
+
+@{
+    ViewBag.Title = "ProfileView";
+    Layout = "~/Views/Patient/PatientMaster.cshtml";
+}
+
+
+<center>
+    <div class="container-fluid">
+        <div class="card" style="width: 80%; margin-top: 20px; ">
+            <div style=" background-color: rgba(128,128,128,0.2);height:50PX">
+                <b style="font-size:x-large;margin-top:20PX">PROFILE</b>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <b>DOCTOR ID</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.PatId)
+                                </div>
+                                <div class="col-md-4">
+                                    <b>DOCTOR NAME</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.PatName)
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <b>BLOOD GROUP</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.bloodgrp)
+
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <b>GENDER</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.Gender)
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b>AGE</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.age)
+                                </div>
+                                <div class="col-md-4">
+                                    <b>ADDRESS</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.Address)
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <b>PHONE NUMBER</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.phonenumber)
+                                </div>
+                                <div class="col-md-4">
+                                    <b>Email</b><br />
+
+                                    @Html.DisplayFor(modelItem => modelItem.email)
+
+                                </div>
+                                <div class="col-md-4">
+                                    <b>PASSWORD</b><br />
+
+                                    @Html.DisplayFor(modelItem => modelItem.password)
+
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-12">
+                                    @Html.ActionLink("UPDATE", "EditPatient", new { id = Model.PatId }, new { @class = "btn btn-dark" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</center>
+
+
+
+
+
+
+
+@*<center>
+
+
+            <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+                <h1 class="text-dark">PATIENTS</h1>
+
+            </div>
+            <br />
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        PATIENT ID
+                    </th>
+                    <th>
+                        PATIENT NAME
+                    </th>
+                    <th>
+                        GENDER
+                    </th>
+                    <th>
+                        ADDRESS
+                    </th>
+
+                    <th>
+                        PHONE NUMBER
+                    </th>
+                    <th>
+                        AGE
+                    </th>
+                    <th>
+                        BLOOD GROUP
+                    </th>
+                    <th>
+                        EMAIL
+                    </th>
+                    <th>
+                        PASSWORD
+                    </th>
+                    <th>
+                        ACTIONS
+                    </th>
+
+                </tr>
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.PatId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.PatName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.phonenumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.bloodgrp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => modelItem.password)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditPatient", new { id = modelItem.PatId }, new { @class = "btn btn-dark" })
+
+                        </td>
+
+                    </tr>
+
+
+            </table>
+
+
+    </center>*@
+

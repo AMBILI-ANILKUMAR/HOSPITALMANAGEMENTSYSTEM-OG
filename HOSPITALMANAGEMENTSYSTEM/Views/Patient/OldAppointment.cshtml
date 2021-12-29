@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Appointments>
+
+@{ ViewBag.Title = "OldAppointment";
+                Layout = "~/Views/Patient/PatientMaster.cshtml"; }
+@if (!Model.Any())
+{
+<h1 style="color: red; text-align: center; margin-top: 100px">@ViewBag.info</h1> }
+            else
+            {
+<center>
+    <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+        <h1 class="text-dark">CONSULTED APPOINMENTS</h1>
+
+    </div>
+</center>
+                <table class="table">
+                    <tr>
+                        <th>
+                            APPOINTMENT ID
+                        </th>
+                        <th>
+                            DOCTOR NAME
+                        </th>
+                        <th>
+                            SPECIALIZATION
+                        </th>
+                        <th>
+                            DISEASE
+                        </th>
+
+
+                        <th>
+                            APPOINTMENT DATE
+                        </th>
+                        <th>TIME</th>
+                        <th>PRESCRIPTION</th>
+
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SplName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.disease)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppTime)
+        </td>
+
+        <td>
+            @Html.ActionLink(" ", "Prescription", new { id = item.AppointmentId }, new { @class = "bi-file-earmark-ppt-fill", @style = "font-size:24px;margin-left:5px;color:black" })
+        </td>
+    </tr>}
+
+                </table>}

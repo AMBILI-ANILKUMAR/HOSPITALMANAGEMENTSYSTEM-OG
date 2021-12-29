@@ -1,0 +1,83 @@
+﻿@model IEnumerable<HOSPITALMANAGEMENTSYSTEM.Models.Patients>
+
+@{
+    ViewBag.Title = "PatientInfo";
+    Layout = "~/Views/Doctor/DoctorMaster.cshtml";
+}
+
+@if (!Model.Any())
+{
+    <h1 style="color:red;text-align:center">@ViewBag.info</h1>
+}
+else
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                PATIENT ID
+            </th>
+            <th>
+                PATIENT NAME
+            </th>
+            <th>
+                GENDER
+            </th>
+            <th>
+                ADDRESS
+            </th>
+
+            <th>
+                PHONE NUMBER
+            </th>
+            <th>
+                AGE
+            </th>
+            <th>
+                BLOOD GROUP
+            </th>
+            <th>
+                EMAIL
+            </th>
+            
+
+        </tr>
+        @*<tr>
+                <td colspan="8"> <h1 style="color:red;text-align:center">@ViewBag.info</h1></td>
+            </tr>*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phonenumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bloodgrp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                
+
+
+            </tr>
+        }
+
+    </table>
+}
+

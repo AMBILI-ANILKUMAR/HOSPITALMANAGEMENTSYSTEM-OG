@@ -1,0 +1,144 @@
+﻿@model HOSPITALMANAGEMENTSYSTEM.Models.Doctors
+
+@{
+    ViewBag.Title = "ProfileView";
+    Layout = "~/Views/Doctor/DoctorMaster.cshtml";
+}
+
+<center>
+    <div class="container-fluid">
+        <div class="card" style="width: 80%; margin-top: 20px; ">
+            <div style=" background-color: rgba(128,128,128,0.2);height:50PX">
+                <b style="font-size:x-large;margin-top:20PX">PROFILE</b>
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <b>DOCTOR ID</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.DoctId)
+                                </div>
+                                <div class="col-md-4">
+                                    <b>DOCTOR NAME</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.DoctName)
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <b>SPECIALIZATION</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.specializationName)
+                                   
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <b>GENDER</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.Gender)
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b>AGE</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.age)
+                                </div>
+                                <div class="col-md-4">
+                                    <b>ADDRESS</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.Address)
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <b>PHONE NUMBER</b><br />
+                                    @Html.DisplayFor(modelItem => modelItem.phonenumber)
+                                </div>
+                                <div class="col-md-4">
+                                    <b>Email</b><br />
+
+                                    @Html.DisplayFor(modelItem => modelItem.email)
+
+                                </div>
+                                <div class="col-md-4">
+                                    <b>PASSWORD</b><br />
+
+                                    @Html.DisplayFor(modelItem => modelItem.password)
+
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-12">
+                                    @Html.ActionLink("UPDATE", "EditProfile", new { id = Model.DoctId }, new { @class = "btn btn-dark" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</center>
+
+@*<center>
+    <div style=" background-color: rgba(128,128,128,0.2);margin-top:20PX ">
+        <h1 class="text-dark">PROFILE</h1>
+
+    </div>
+    <table style="width:100%;" class="table  table-hover">
+
+        <tbody>
+
+            <tr>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+                <td>
+                    <b>DOCTOR ID</b><br />
+                </td>
+            </tr>
+
+
+
+
+        </tbody>
+    </table>
+
+</center>*@
+
+
