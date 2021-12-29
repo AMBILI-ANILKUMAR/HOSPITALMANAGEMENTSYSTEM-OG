@@ -38,7 +38,9 @@
                 <th>
                     TIME
                 </th>
-
+                <th>
+                    OPERATION
+                </th>
 
             </tr>
 
@@ -46,30 +48,36 @@
         <tbody>
             @foreach (var item in Model)
             {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.AppointmentId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PatName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.disease)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DoctName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SplName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AppTime)
-    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.disease)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoctName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SplName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppTime)
+                </td>
+                <td>
 
-</tr>}
+                    @Html.ActionLink(" ", "EditAppointment", new { id = item.AppointmentId }, new { @class = "fas fa-edit", @style = "font-size:24px;margin-left:5px;color:black" })
+                    @Html.ActionLink(" ", "DeleteAppointment", new { id = item.AppointmentId }, new { @class = "bi bi-trash-fill", @style = "font-size:24px;margin-left:25px;color:black" })
+
+                </td>
+
+            </tr>}
         </tbody>
     </table>
     @if (Model.HasNextPage || Model.HasPreviousPage)
@@ -78,7 +86,7 @@
     <p></p>
     <p></p>
     <div class="pagination" style="margin-left: 450px">
-        @Html.PagedListPager(Model, page => Url.Action("ViewAppointment", new { page }))
+        @Html.PagedListPager(Model, page => Url.Action("SAppointment", new { page }))
     </div>
 </div>}
 </center>}

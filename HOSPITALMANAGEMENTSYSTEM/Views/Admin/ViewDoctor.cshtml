@@ -49,9 +49,7 @@ else
                 <th>
                     PASSWORD
                 </th>
-                <th>
-                    OPERATION
-                </th>
+                <th>OPERATION</th>
             </tr>
 
         </thead>
@@ -88,11 +86,10 @@ else
                     @Html.DisplayFor(modelItem => item.password)
                 </td>
                 <td>
-
-                    @Html.ActionLink(" ", "EditDoctor", new { id = item.DoctId }, new { @class = "fas fa-edit", @style = "font-size:24px;margin-left:5px;color:black" })
-                    @Html.ActionLink(" ", "DeleteDoctor", new { id = item.DoctId }, new { @class = "bi bi-trash-fill", @style = "font-size:24px;margin-left:25px;color:black" })
+                    @Html.ActionLink(" ", "EditDoctor", new { id = item.DoctId }, new { @class = "fas fa-edit", @style = "font-size:24px;margin-left:35px;color:black" })
 
                 </td>
+               
             </tr>
             }
         </tbody>

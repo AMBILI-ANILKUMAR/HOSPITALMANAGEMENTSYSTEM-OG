@@ -160,8 +160,7 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                         d.email = ds.Tables[0].Rows[i]["email"].ToString();
                         d.password = ds.Tables[0].Rows[i]["password"].ToString();
                     }
-                    d.SpclDropdown = new SelectList(aop.GetSpclData(), "spclId", "specializationName", d.spclId);
-                    
+                    d.SpclDropdown = new SelectList(aop.GetSpclData(), "spclId", "specializationName", d.spclId);                    
                     return View(d);
 
                 }
@@ -173,6 +172,75 @@ namespace HOSPITALMANAGEMENTSYSTEM.Controllers
                     return View(d);
                 }
             
+        }
+        public ActionResult EditAppointment(string id)
+        {
+            AppointmentDemo a = new AppointmentDemo();
+            DataSet ds = aop.ViewAppointment(id);
+            if ((ds.Tables["apt"].Rows.Count > 0))
+            {
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    a.AppointmentId = ds.Tables[0].Rows[i]["AppointmentId"].ToString();
+                    a.PatName = ds.Tables[0].Rows[i]["PatName"].ToString();
+                    a.DoctId= ds.Tables[0].Rows[i]["DoctId"].ToString();
+                    a.PatId= ds.Tables[0].Rows[i]["PatId"].ToString();
+                    a.DoctName = ds.Tables[0].Rows[i]["DoctName"].ToString();
+                    a.SplName = ds.Tables[0].Rows[i]["specializationName"].ToString();
+                    a.disease = ds.Tables[0].Rows[i]["disease"].ToString();
+                    a.Date = DateTime.Parse(ds.Tables[0].Rows[i]["AppDate"].ToString());
+                    a.AppTime = (ds.Tables[0].Rows[i]["AppTime"].ToString());
+                }
+                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "fullname",a.DoctId);
+                a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName",a.PatId);
+                if (a.AppTime == "9AM - 12PM")
+                    a.AppTime = "0";
+                else if (a.AppTime == "2PM - 4PM")
+                    a.AppTime = "1";
+                else if (a.AppTime == "5PM - 6PM")
+                    a.AppTime = "2";
+                return View(a);
+
+            }
+            else
+            {
+                a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "fullname");
+                a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
+                if (a.AppTime == "0")
+                    a.AppTime = "9AM - 12PM";
+                else if (a.AppTime == "1")
+                    a.AppTime = "2PM - 4PM";
+                else if (a.AppTime == "2")
+                    a.AppTime = "5PM - 6PM";
+                return View(a);
+            }
+        }
+        [HttpPost]
+        public ActionResult EditAppointment(string id, AppointmentDemo a)
+        {
+            if (a.AppTime == "0")
+                a.AppTime = "9AM - 12PM";
+            else if (a.AppTime == "1")
+                a.AppTime = "2PM - 4PM";
+            else if (a.AppTime == "2")
+                a.AppTime = "5PM - 6PM";
+            bool b = aop.EditAppointment(id, a);
+            if(b==true)
+                return RedirectToAction("SAppointment");
+            a.DocDropdown = new SelectList(aop.GetDocData(), "DoctId", "fullname");
+            a.PatDropdown = new SelectList(aop.GetPatData(), "PatId", "PatName");
+            return View(a);
+
+        }
+        public ActionResult DeleteAppointment(string id)
+        {
+
+            bool b = aop.DeleteAppointment(id);
+            if (b == true)
+            {
+                return RedirectToAction("SAppointment");
+            }
+            return View();
         }
         [HttpPost]
         public ActionResult EditDoctor(string id, DoctorDemo d)

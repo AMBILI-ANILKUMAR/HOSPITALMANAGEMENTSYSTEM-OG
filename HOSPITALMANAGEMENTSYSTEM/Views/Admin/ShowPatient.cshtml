@@ -51,9 +51,7 @@
                 <th>
                     PASSWORD
                 </th>
-                <th>
-                    OPERATION
-                </th>
+                <th>OPERATION</th>
             </tr>
 
 
@@ -88,9 +86,7 @@
                 @Html.DisplayFor(modelItem => item.password)
             </td>
             <td>
-
-                @Html.ActionLink(" ", "EditPatient", new { id = item.PatId }, new { @class = "fas fa-edit", @style = "font-size:24px;margin-left:5px;color:black" })
-                @Html.ActionLink(" ", "DeletePatient", new { id = item.PatId }, new { @class = "bi bi-trash-fill", @style = "font-size:24px;margin-left:25px;color:black" })
+                @Html.ActionLink(" ", "EditPatient", new { id = item.PatId }, new { @class = "fas fa-edit", @style = "font-size:24px;margin-left:35px;color:black" })
 
             </td>
         </tr>

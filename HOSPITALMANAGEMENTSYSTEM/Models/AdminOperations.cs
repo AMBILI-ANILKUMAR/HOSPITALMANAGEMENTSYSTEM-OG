@@ -284,6 +284,50 @@ namespace HOSPITALMANAGEMENTSYSTEM.Models
             adpt.Fill(ds, "apt");
             return ds;
         }
+        public DataSet ViewAppointment(string id)
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("select * from Appointments as a inner join Patients as p on a.PatId=p.PatId  inner join Doctors as d on a.DoctId=d.DoctId  inner join Specialization as s on d.spclId=s.spclId where a.AppointmentId='"+id+"'", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "apt");
+            return ds;
+        }
+        public bool UpdateAppointment(Appointments d)
+        {
+            bool b = false;
+            try
+            {
+                SqlDataAdapter adpt = new SqlDataAdapter("update Appointments set DoctId='" + d.DoctId + "',AppDate='" + d.Date + "',AppTime='" + d.AppTime + "' where AppointmentId='" + d.AppointmentId + "'", con);
+                DataSet ds = new DataSet();
+                adpt.Fill(ds, "apt");
+                b = true;
+            }
+            catch (Exception ex)
+            {
+                b = false;
+            }
+            return b;
+        }
+        public bool EditAppointment(string id, AppointmentDemo p)
+        {
+            Appointments a = new Appointments();
+            a.AppointmentId = id;
+            a.DoctId = p.DoctId;
+            a.Date = p.Date;
+            a.AppTime = p.AppTime;           
+            bool b = UpdateAppointment(a);
+            return b;
+        }
+        public bool DeleteAppointment(string id)
+        {
+
+            bool b = false;
+            SqlDataAdapter adpt = new SqlDataAdapter("delete from Appointments where AppointmentId='" + id + "'", con);
+            DataSet ds = new DataSet();
+            adpt.Fill(ds, "Pat");
+            b = true;
+            return b;
+            //return RedirectToAction("ViewDoctor");
+        }
         public DataSet SAppointment()
         {
             SqlDataAdapter adpt = new SqlDataAdapter("select * from Appointments as a inner join Patients as p on a.PatId = p.PatId  inner join Doctors as d on a.DoctId = d.DoctId  inner join Specialization as s on d.spclId = s.spclId where a.flag = 0", con);

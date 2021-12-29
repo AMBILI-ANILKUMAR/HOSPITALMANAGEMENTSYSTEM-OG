@@ -177,6 +177,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminOperations.cs" />
+    <Compile Include="Models\AppointmentDemo.cs" />
     <Compile Include="Models\Appointments.cs" />
     <Compile Include="Models\DoctorDemo.cs" />
     <Compile Include="Models\DoctorOperations.cs" />
@@ -313,6 +314,7 @@
     <Content Include="Views\Admin\DoctorSpl.cshtml" />
     <Content Include="Views\Admin\SAppointment.cshtml" />
     <Content Include="Views\Admin\CAppointment.cshtml" />
+    <Content Include="Views\Admin\EditAppointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
